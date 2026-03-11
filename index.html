@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vayuveer – LPG Safety Monitor</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Alert Banner -->
+    <div id="alert-banner" class="alert-banner hidden">
+        ⚠ LPG Leak Detected – Open Windows Immediately
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-titles">
+                <h1>Vayuveer</h1>
+                <p>LPG Safety Monitor</p>
+            </div>
+            <div class="connection-status">
+                <span id="conn-dot" class="dot offline"></span>
+                <span id="conn-text">Offline</span>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <main class="dashboard-grid">
+            
+            <!-- Gas Level Card -->
+            <div class="card gas-card">
+                <h2>Gas Level</h2>
+                <div class="value-container">
+                    <span id="gas-value" class="large-value">--</span>
+                    <span class="unit">ppm</span>
+                </div>
+            </div>
+
+            <!-- Temperature Card -->
+            <div class="card temp-card">
+                <h2>Temperature</h2>
+                <div class="value-container">
+                    <span id="temp-value" class="large-value">--</span>
+                    <span class="unit">°C</span>
+                </div>
+            </div>
+
+            <!-- Humidity Card -->
+            <div class="card auth-card">
+                <h2>Humidity</h2>
+                <div class="value-container">
+                    <span id="humidity-value" class="large-value">--</span>
+                    <span class="unit">%</span>
+                </div>
+            </div>
+
+            <!-- Leak Rate Card -->
+            <div class="card leak-card">
+                <h2>Leak Rate</h2>
+                <div class="value-container">
+                    <span id="leak-value" class="large-value">--</span>
+                    <span class="unit"></span>
+                </div>
+                <div id="leak-warning" class="leak-warning hidden">
+                    Rapid Gas Rise Detected
+                </div>
+            </div>
+
+            <!-- Status Card -->
+            <div id="status-card" class="card status-card safe">
+                <h2>System Status</h2>
+                <div class="status-indicator">
+                    <span id="system-status">WAITING</span>
+                </div>
+            </div>
+
+            <!-- Threshold Control Card -->
+            <div class="card threshold-card">
+                <h2>Threshold Control</h2>
+                <div class="threshold-display">
+                    <span id="threshold-val">--</span>
+                </div>
+                <!-- Range slider for threshold control -->
+                <input type="range" id="threshold-slider" min="0" max="4095" value="1000" class="slider">
+            </div>
+
+            <!-- Graph Card -->
+            <div class="card graph-card">
+                <h2>Real-Time Gas Graph</h2>
+                <div class="chart-container">
+                    <canvas id="gasChart"></canvas>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
